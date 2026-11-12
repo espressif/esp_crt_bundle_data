@@ -5,8 +5,17 @@ on:
     branches:
       - main
 
+# The job only reads the repository; the registry token is a separate secret.
+permissions:
+  contents: read
+
+# Never run two uploads of the same ref at once.
+concurrency:
+  group: upload-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
-  upload_components:
+  upload_component:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -14,6 +23,9 @@ jobs:
       - name: Upload esp_crt_bundle_data to IDF Component Registry
         uses: espressif/upload-components-ci-action@v2
         with:
-          name: esp_crt_bundle_data
+          # Single component located at the repository root
+          components: "esp_crt_bundle_data: ."
           namespace: "espressif"
           api_token: ${{ secrets.IDF_COMPONENT_API_TOKEN }}
+          # Forks only validate the component, the espressif repository uploads it.
+          dry_run: ${{ github.repository_owner != 'espressif' }}

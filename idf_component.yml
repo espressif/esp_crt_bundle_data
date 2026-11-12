@@ -1,0 +1,10 @@
+version: "1.0.0"
+description: Root CA certificate data for the ESP-IDF X.509 certificate bundle (esp_crt_bundle)
+url: https://github.com/espressif/esp_crt_bundle_data
+license: "MPL-2.0"
+tags:
+  - tls
+  - certificates
+  - esp_crt_bundle
+dependencies:
+  idf: ">=5.3"

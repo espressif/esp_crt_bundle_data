@@ -1,0 +1,8 @@
+Certificate data in certs/cacrt_all.pem and certs/cacrt_deprecated.pem is
+extracted from Mozilla's NSS root certificate store (certdata.txt) via the
+curl project's mk-ca-bundle tooling and is distributed under the terms of the
+Mozilla Public License, v. 2.0 (https://mozilla.org/MPL/2.0/).
+
+All other files in this component are Copyright (c) Espressif Systems
+(Shanghai) CO LTD and are licensed under the Apache License, Version 2.0
+(http://www.apache.org/licenses/LICENSE-2.0).
