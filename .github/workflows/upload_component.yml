@@ -1,0 +1,19 @@
+name: Push esp_crt_bundle_data to IDF Component Registry
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  upload_components:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Upload esp_crt_bundle_data to IDF Component Registry
+        uses: espressif/upload-components-ci-action@v2
+        with:
+          name: esp_crt_bundle_data
+          namespace: "espressif"
+          api_token: ${{ secrets.IDF_COMPONENT_API_TOKEN }}
